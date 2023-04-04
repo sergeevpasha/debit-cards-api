@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+    workspace:
+        container_name: "debit-cards-workspace"
+        image: sergeevpasha/php-cli:1.0.0
+        tty: true
+        volumes:
+            - ./:/var/www:consistent
+        networks:
+            - default-network
+networks:
+    default-network:
+        name: "debit-cards-default-network"
+        driver: bridge

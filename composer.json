@@ -1,0 +1,24 @@
+{
+  "name": "sergeevpasha/debit-cards-api",
+  "description": "Connect to unknown api",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Sergeevpasha\\DebitCardsApi\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Pavel Sergeev",
+      "email": "sergeevpasha90@gmail.com",
+      "homepage": "https://github.com/sergeevpasha"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=8.0",
+    "guzzlehttp/guzzle": "^7.5",
+    "spatie/data-transfer-object": "^3.9"
+  }
+}
