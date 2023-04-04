@@ -6,6 +6,6 @@ Use examples
 
 ```
 $api = new Sergeevpasha\DebitCardsApi\DebitCard('key');
-$api->country()->get(1);
-$api->card()->getPin(1);
+$api->country->get(1);
+$api->card->getPin(1);
 ```
