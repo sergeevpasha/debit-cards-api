@@ -81,33 +81,13 @@ class Card
     }
 
     /**
-     * @param int        $countryId
-     * @param string     $currency
-     * @param string     $firstName
-     * @param string     $lastName
-     * @param string     $city
-     * @param string     $address
-     * @param string     $phone
-     * @param float|null $balance
-     * @param int|null   $pin
+     * @param array $params
      *
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function create(int $countryId, string $currency, string $firstName, string $lastName, string $city, string $address, string $phone, ?float $balance, ?int $pin): array
+    public function create(array $params): array
     {
-        $params   = array_filter(
-            [
-                'country_id' => $countryId,
-                'currency'   => $currency,
-                'first_name' => $firstName,
-                'last_name'  => $lastName,
-                'city'       => $city,
-                'address'    => $address,
-                'phone'      => $phone,
-                'balance'    => $balance,
-                'pin'        => $pin,
-            ], fn($value) => !is_null($value));
         $response = $this->client->request('POST', '/cards/create', $params);
 
         return json_decode($response->getBody()->getContents(), true);
