@@ -15,20 +15,18 @@ use stdClass;
 class DebitCard
 {
     private ApiClient $apiClient;
-    private stdClass $api;
 
     public function __construct(string $key)
     {
-        $this->apiClient    = new ApiClient($key);
-        $this->api          = new stdClass();
-        $this->api->country = new Country($this->apiClient);
-        $this->api->card    = new Card($this->apiClient);
+        $this->apiClient = new ApiClient($key);
     }
 
     public function __get(string $property)
     {
-        if (isset($this->api->{$property})) {
-            return $this->api->{$property};
+        $class = __NAMESPACE__ . "\\Api\\" . lcfirst($property);
+
+        if (\class_exists($class)) {
+            return new $class($this->apiClient);
         }
 
         throw new \InvalidArgumentException("Invalid property: $property");
